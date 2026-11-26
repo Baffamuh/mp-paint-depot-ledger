@@ -31,7 +31,7 @@ function AuthPage() {
     setBusy(true);
     const { error } = await supabase.auth.signInWithPassword({ email: DEMO_EMAIL, password: DEMO_PASSWORD });
     setBusy(false);
-    if (error) return toast.error("Demo is not available right now.");
+    if (error) { toast.error("Demo is not available right now."); return; }
     nav({ to: "/dashboard" });
   }
 
