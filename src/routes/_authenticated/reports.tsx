@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { useProducts, useTransactions } from "@/lib/db";
 import { downloadCSV, naira, startOf, TX_LABELS } from "@/lib/format";
 import { summarize } from "@/lib/profit";
-import banner from "@/assets/mp-banner.jpg.asset.json";
+import { banner } from "@/lib/brand";
 
 export const Route = createFileRoute("/_authenticated/reports")({
   head: () => ({ meta: [{ title: "Reports & Profit and Loss — MP Paints" }, { name: "description", content: "Daily, weekly, monthly and annual reports." }] }),

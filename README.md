@@ -27,3 +27,8 @@ npm run dev
 - TypeScript
 - React
 - Tailwind CSS
+
+## Deploy to Vercel
+1. Push this repo to GitHub and import it in Vercel (framework: Other; build `npm run build`).
+2. Add env vars: `VITE_SUPABASE_URL`, `VITE_SUPABASE_PUBLISHABLE_KEY`, `VITE_SUPABASE_PROJECT_ID`, `SUPABASE_URL`, `SUPABASE_PUBLISHABLE_KEY` (values from `.env`).
+3. Deploy. Demo login: demo@mppaints.app / DemoMP2026!

@@ -7,7 +7,7 @@ import {
 import { supabase } from "@/integrations/supabase/client";
 import { useMe } from "@/lib/me";
 import { useT } from "@/lib/i18n";
-import badge from "@/assets/mp-badge.png.asset.json";
+import { badge } from "@/lib/brand";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 

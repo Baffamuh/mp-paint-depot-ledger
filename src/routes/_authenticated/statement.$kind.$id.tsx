@@ -6,7 +6,7 @@ import { PageHeader, TableWrap, th, td } from "@/components/app/ui";
 import { Button } from "@/components/ui/button";
 import { fmtDate, naira, TX_LABELS } from "@/lib/format";
 import { useSettings } from "@/lib/db";
-import banner from "@/assets/mp-banner.jpg.asset.json";
+import { banner } from "@/lib/brand";
 
 export const Route = createFileRoute("/_authenticated/statement/$kind/$id")({
   head: () => ({ meta: [{ title: "Statement — MP Paints" }, { name: "description", content: "Customer or supplier statement." }] }),

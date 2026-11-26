@@ -1,5 +1,5 @@
-import badge from "@/assets/mp-badge.png.asset.json";
-import banner from "@/assets/mp-banner.jpg.asset.json";
+import { badge } from "@/lib/brand";
+import { banner } from "@/lib/brand";
 import { fmtDate, naira, TX_LABELS } from "@/lib/format";
 
 export type ReceiptData = {

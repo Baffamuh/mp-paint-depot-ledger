@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useRefresh, useSettings } from "@/lib/db";
-import badge from "@/assets/mp-badge.png.asset.json";
+import { badge } from "@/lib/brand";
 
 export const Route = createFileRoute("/_authenticated/settings")({
   head: () => ({ meta: [{ title: "Business & Receipt Settings — MP Paints" }, { name: "description", content: "Business details printed on receipts." }] }),

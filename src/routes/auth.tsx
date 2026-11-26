@@ -5,7 +5,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import badge from "@/assets/mp-badge.png.asset.json";
+import { badge, DEMO_EMAIL, DEMO_PASSWORD } from "@/lib/brand";
 
 export const Route = createFileRoute("/auth")({
   head: () => ({
@@ -26,6 +26,14 @@ function AuthPage() {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [busy, setBusy] = useState(false);
+
+  async function demo() {
+    setBusy(true);
+    const { error } = await supabase.auth.signInWithPassword({ email: DEMO_EMAIL, password: DEMO_PASSWORD });
+    setBusy(false);
+    if (error) return toast.error("Demo is not available right now.");
+    nav({ to: "/dashboard" });
+  }
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
@@ -71,6 +79,9 @@ function AuthPage() {
           <div className="space-y-1"><Label>Password</Label><Input type="password" minLength={8} value={password} onChange={(e) => setPassword(e.target.value)} required /></div>
         )}
         <Button className="w-full" disabled={busy}>{mode === "in" ? "Sign in" : mode === "up" ? "Create account" : "Send reset link"}</Button>
+        {mode === "in" && (
+          <Button type="button" variant="outline" className="w-full" disabled={busy} onClick={demo}>Try the demo (no sign-up)</Button>
+        )}
         <div className="flex justify-between text-sm">
           {mode !== "in" ? <button type="button" className="text-primary" onClick={() => setMode("in")}>Back to sign in</button>
             : <button type="button" className="text-primary" onClick={() => setMode("forgot")}>Forgot password?</button>}
