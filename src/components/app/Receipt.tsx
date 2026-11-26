@@ -1,5 +1,4 @@
-import { badge } from "@/lib/brand";
-import { banner } from "@/lib/brand";
+import { receiptLogo } from "@/lib/brand";
 import { fmtDate, naira, TX_LABELS } from "@/lib/format";
 
 export type ReceiptData = {
@@ -19,7 +18,7 @@ export function Receipt({ r, biz, format, copy }: { r: ReceiptData; biz: Biz; fo
     return (
       <div className="print-area mx-auto bg-card text-foreground font-mono text-[11px] leading-snug p-3 shadow" style={{ width: "76mm" }}>
         <div className="text-center">
-          <img src={badge.url} alt="MP Paint logo" className="mx-auto h-16 w-16" />
+          <img src={receiptLogo.url} alt="MP Paint logo" className="mx-auto h-20 w-20 object-contain" />
           <div className="font-display text-sm font-extrabold mt-1">{biz.business_name}</div>
           <div>{biz.address}</div>
           <div>Tel: {biz.phone}</div>
@@ -61,7 +60,8 @@ export function Receipt({ r, biz, format, copy }: { r: ReceiptData; biz: Biz; fo
   return (
     <div className="print-area mx-auto bg-card text-foreground shadow p-8 relative" style={{ width: "210mm", minHeight: "270mm", maxWidth: "100%" }}>
       {copy && <div className="absolute right-8 top-8 rotate-12 border-2 border-brand-red text-brand-red font-bold px-3 py-1 text-lg">COPY</div>}
-      <img src={banner.url} alt="MP Paint Depot Azare" className="w-full max-h-40 object-contain" />
+      <img src={receiptLogo.url} alt="MP Paint Depot Azare" className="mx-auto h-32 w-32 object-contain" />
+      <div className="text-center font-display text-2xl font-extrabold mt-2">{biz.business_name}</div>
       <div className="text-center text-sm mt-2">{biz.address} · Tel: {biz.phone}</div>
       <div className="mt-4 bg-navy text-navy-foreground px-4 py-2 flex justify-between items-center">
         <span className="font-display font-bold uppercase tracking-wide">{title} Receipt</span>

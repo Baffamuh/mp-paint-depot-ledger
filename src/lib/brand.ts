@@ -3,3 +3,4 @@ export const badge = { url: "/mp-badge.png" };
 export const banner = { url: "/mp-banner.jpg" };
 export const DEMO_EMAIL = "demo@mppaints.app";
 export const DEMO_PASSWORD = "DemoMP2026!";
+export const receiptLogo = { url: "/mp-receipt-logo.png" };
