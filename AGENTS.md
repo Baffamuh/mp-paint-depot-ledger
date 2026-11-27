@@ -31,3 +31,6 @@ use the editor.
 
 - Logos are plain files in /public referenced via src/lib/brand.ts, not Lovable asset pointers, so they also load when hosted on Vercel.
 - vite.config.ts switches nitro to the "vercel" preset when VERCEL is set, so the same repo deploys to Vercel and Lovable.
+- Paint recommendations use an authenticated member-only server function and the AI Gateway SDK; catalog IDs, pack capacities, prices and quantity calculations are validated outside the model to prevent fabricated quotes.
+- Receipt dimensions use millimetre-based global styles and remove shell spacing for printing, so thermal and A4 outputs retain their physical sizing.
+- Purchase form validation rejects nonpositive costs and functional line updates preserve unrelated entries, preventing accidental free inventory from the purchase screen.

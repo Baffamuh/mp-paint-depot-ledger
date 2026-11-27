@@ -5,7 +5,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { badge, DEMO_EMAIL, DEMO_PASSWORD } from "@/lib/brand";
+import { DEMO_EMAIL, DEMO_PASSWORD } from "@/lib/brand";
 
 export const Route = createFileRoute("/auth")({
   head: () => ({
@@ -67,7 +67,6 @@ function AuthPage() {
     <div className="min-h-screen grid place-items-center bg-navy px-4">
       <form onSubmit={submit} className="w-full max-w-sm bg-card rounded-2xl shadow-2xl p-6 space-y-4">
         <div className="flex flex-col items-center gap-2">
-          <img src={badge.url} alt="MP Paint logo" className="h-20 w-20" />
           <h1 className="text-xl font-bold text-center">MP Paints Finance Records</h1>
           <p className="text-sm text-muted-foreground">{mode === "in" ? "Sign in to continue" : mode === "up" ? "Create owner account" : "Reset your password"}</p>
         </div>

@@ -16,9 +16,9 @@ export function Receipt({ r, biz, format, copy }: { r: ReceiptData; biz: Biz; fo
 
   if (format === "thermal") {
     return (
-      <div className="print-area mx-auto bg-card text-foreground font-mono text-[11px] leading-snug p-3 shadow" style={{ width: "76mm" }}>
+      <div className="print-area receipt-thermal mx-auto bg-card text-foreground font-mono text-[11px] leading-snug p-3 shadow">
         <div className="text-center">
-          <img src={receiptLogo.url} alt="MP Paint logo" className="mx-auto h-20 w-20 object-contain" />
+          <img src={receiptLogo.url} alt="MP Paint Depot Azare receipt logo" className="receipt-logo mx-auto object-contain" />
           <div className="font-display text-sm font-extrabold mt-1">{biz.business_name}</div>
           <div>{biz.address}</div>
           <div>Tel: {biz.phone}</div>
@@ -38,7 +38,7 @@ export function Receipt({ r, biz, format, copy }: { r: ReceiptData; biz: Biz; fo
             {r.items.map((i, n) => (
               <div key={n} className="mb-1">
                 <div>{i.description}</div>
-                <div className="flex justify-between"><span>{Number(i.qty)} x {naira(i.unit_price)}</span><span>{naira(i.line_total)}</span></div>
+                <div className="flex justify-between gap-2"><span>{Number(i.qty)} x {naira(i.unit_price)}</span><span className="shrink-0">{naira(i.line_total)}</span></div>
               </div>
             ))}
           </>
@@ -58,14 +58,14 @@ export function Receipt({ r, biz, format, copy }: { r: ReceiptData; biz: Biz; fo
   }
 
   return (
-    <div className="print-area mx-auto bg-card text-foreground shadow p-8 relative" style={{ width: "210mm", minHeight: "270mm", maxWidth: "100%" }}>
+    <div className="print-area receipt-a4 mx-auto bg-card text-foreground shadow p-4 sm:p-8 relative">
       {copy && <div className="absolute right-8 top-8 rotate-12 border-2 border-brand-red text-brand-red font-bold px-3 py-1 text-lg">COPY</div>}
-      <img src={receiptLogo.url} alt="MP Paint Depot Azare" className="mx-auto h-32 w-32 object-contain" />
+      <img src={receiptLogo.url} alt="MP Paint Depot Azare receipt logo" className="receipt-logo mx-auto object-contain" />
       <div className="text-center font-display text-2xl font-extrabold mt-2">{biz.business_name}</div>
       <div className="text-center text-sm mt-2">{biz.address} · Tel: {biz.phone}</div>
       <div className="mt-4 bg-navy text-navy-foreground px-4 py-2 flex justify-between items-center">
         <span className="font-display font-bold uppercase tracking-wide">{title} Receipt</span>
-        <span className="font-mono">{r.ref}</span>
+        <span className="font-mono break-all text-right">{r.ref}</span>
       </div>
       <div className="grid grid-cols-2 gap-x-8 gap-y-1 text-sm mt-4">
         <Row k="Date & Time" v={fmtDate(r.created_at)} />
@@ -89,7 +89,7 @@ export function Receipt({ r, biz, format, copy }: { r: ReceiptData; biz: Biz; fo
         </tbody>
       </table>
       {r.items.length > 0 && r.description && <p className="text-sm mt-2">Note: {r.description}</p>}
-      <div className="ml-auto mt-4 w-72 text-sm space-y-1">
+      <div className="ml-auto mt-4 w-72 max-w-full text-sm space-y-1">
         <Row k="Total" v={naira(r.total)} bold />
         {showPaidBal && <Row k="Amount Paid" v={naira(r.paid)} />}
         {showPaidBal && <Row k="Outstanding Balance" v={naira(r.balance_due)} bold />}

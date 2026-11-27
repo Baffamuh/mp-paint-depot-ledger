@@ -2,12 +2,11 @@ import { Link, Outlet, useNavigate, useRouterState } from "@tanstack/react-route
 import { useState } from "react";
 import {
   LayoutDashboard, ShoppingCart, PaintBucket, Truck, Factory, Users, HandCoins, Receipt, Wallet,
-  History, BookOpen, CalendarCheck, BarChart3, UserCog, Settings, ShieldCheck, LogOut, Menu, X,
+  History, BookOpen, CalendarCheck, BarChart3, UserCog, Settings, ShieldCheck, LogOut, Menu, X, Sparkles,
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useMe } from "@/lib/me";
 import { useT } from "@/lib/i18n";
-import { badge } from "@/lib/brand";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -15,6 +14,7 @@ const NAV = [
   { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard, perm: null },
   { to: "/pos", label: "Sales / POS", icon: ShoppingCart, perm: "pos" },
   { to: "/products", label: "Products", icon: PaintBucket, perm: null },
+  { to: "/paint-adviser", label: "Paint Adviser", icon: Sparkles, perm: null },
   { to: "/purchases", label: "Purchases", icon: Truck, perm: "purchases" },
   { to: "/suppliers", label: "Suppliers", icon: Factory, perm: "purchases" },
   { to: "/customers", label: "Customers", icon: Users, perm: "customers" },
@@ -42,7 +42,6 @@ export function AppShell() {
     return (
       <div className="min-h-screen grid place-items-center px-4">
         <div className="max-w-md text-center space-y-3">
-          <img src={badge.url} alt="" className="h-20 mx-auto" />
           <h1 className="text-xl font-bold">Waiting for owner approval</h1>
           <p className="text-muted-foreground text-sm">Your account ({me?.user.email}) has no access yet. Ask the shop owner to approve you on the Staff page.</p>
           <Button variant="outline" onClick={() => supabase.auth.signOut().then(() => nav({ to: "/auth" }))}>Sign out</Button>
@@ -98,7 +97,7 @@ export function AppShell() {
             </Button>
           </div>
         </header>
-        <main className="flex-1 p-3 sm:p-6 min-w-0"><Outlet /></main>
+        <main className="app-main flex-1 p-3 sm:p-6 min-w-0"><Outlet /></main>
       </div>
     </div>
   );
@@ -107,7 +106,6 @@ export function AppShell() {
 function Brand() {
   return (
     <div className="flex items-center gap-2 px-4 py-4 border-b border-sidebar-border">
-      <img src={badge.url} alt="MP Paint logo" className="h-10 w-10 rounded-full bg-card" />
       <div className="leading-tight">
         <div className="font-display font-bold text-sidebar-accent-foreground">MP PAINT DEPOT</div>
         <div className="text-xs opacity-70">Azare · Finance Records</div>

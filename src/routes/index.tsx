@@ -1,6 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ShoppingCart, PaintBucket, Users, Printer, Wallet, BarChart3 } from "lucide-react";
-import { banner, badge } from "@/lib/brand";
 import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/")({
@@ -31,7 +30,6 @@ function Index() {
     <div className="min-h-screen bg-background">
       <header className="bg-navy text-navy-foreground">
         <div className="max-w-6xl mx-auto px-4 h-16 flex items-center gap-3">
-          <img src={badge.url} alt="MP Paint logo" className="h-10 w-10 rounded-full bg-card" />
           <span className="font-display font-bold">MP PAINT DEPOT</span>
           <Button asChild size="sm" variant="secondary" className="ml-auto"><Link to="/auth">Sign in</Link></Button>
         </div>
@@ -45,7 +43,6 @@ function Index() {
               <Button asChild size="lg" variant="secondary"><Link to="/dashboard">Open my shop</Link></Button>
             </div>
           </div>
-          <img src={banner.url} alt="MP Paint Depot Azare" className="w-full rounded-2xl shadow-2xl ring-1 ring-navy-foreground/10" />
         </div>
       </header>
       <section className="max-w-6xl mx-auto px-4 py-14">
