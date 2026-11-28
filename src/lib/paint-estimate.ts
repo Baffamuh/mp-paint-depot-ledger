@@ -48,7 +48,9 @@ export function catalogEstimates(advice: PaintAdvice, catalog: CatalogPaint[], p
     if (!product || seen.has(item.product_id)) throw new Error("The recommendation included an unavailable catalog item. No estimate was saved.");
     seen.add(item.product_id);
     const coats = item.role === "Topcoat" ? project.coats : item.coats;
-    const litres = Math.ceil(paintArea(project) * coats * (1 + project.waste / 100) / item.coverage * 100) / 100;
+    // Epsilon keeps binary rounding noise (e.g. 1210.0000000000002) from adding a phantom pack.
+    const needed = paintArea(project) * coats * (1 + project.waste / 100) / item.coverage;
+    const litres = Math.ceil((needed - 1e-9) * 100) / 100;
     const packSize = packLitres(product.size);
     const packs = packSize === null ? null : Math.ceil(litres / packSize);
     return { ...item, coats, product, litres, packs, estimatedCost: packs === null ? null : packs * Number(product.selling_price) };
