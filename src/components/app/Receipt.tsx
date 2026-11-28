@@ -52,7 +52,6 @@ export function Receipt({ r, biz, format, copy }: { r: ReceiptData; biz: Biz; fo
         <Row k="Served by" v={r.staff_name ?? ""} />
         <div className="my-1 border-t border-dashed border-foreground" />
         <div className="text-center">{biz.receipt_footer}</div>
-        <div className="mt-6 text-center">______________________<br />Authorised Signature</div>
       </div>
     );
   }
@@ -94,11 +93,7 @@ export function Receipt({ r, biz, format, copy }: { r: ReceiptData; biz: Biz; fo
         {showPaidBal && <Row k="Amount Paid" v={naira(r.paid)} />}
         {showPaidBal && <Row k="Outstanding Balance" v={naira(r.balance_due)} bold />}
       </div>
-      <div className="grid grid-cols-2 gap-16 mt-20 text-sm text-center">
-        <div className="border-t pt-1">Customer / Supplier Signature</div>
-        <div className="border-t pt-1">Authorised Signature & Stamp</div>
-      </div>
-      <p className="text-center text-xs text-muted-foreground mt-10">{biz.receipt_footer}</p>
+      <p className="text-center text-xs text-muted-foreground mt-8">{biz.receipt_footer}</p>
     </div>
   );
 }
